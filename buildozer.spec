@@ -15,14 +15,14 @@ source.dir = .
 # (list) Extensions de fichiers à inclure
 source.include_exts = py,png,jpg,json,kv,atlas
 
-# (list) Fichiers spécifiques à inclure
-source.include_patterns = elma.png, icone.png, vic_config.json
+# (list) Fichiers ou motifs spécifiques à inclure
+source.include_patterns = elma.png, icone.png, presplash.png, vic_config.json
 
 # (str) Version de l'application
 version = 1.0.0
 
 # (list) Dépendances Python réelles nécessaires
-requirements = python3, kivy==2.3.0, plyer, google-genai, requests, urllib3, certifi, android
+requirements = python3, kivy, plyer, requests, urllib3, certifi, android, google-genai
 
 # (str) Icône de l'application
 icon.filename = %(source.dir)s/icone.png
@@ -45,7 +45,11 @@ android.api = 33
 # (int) Minimum Android API
 android.minapi = 21
 
-# (str) Architectures cibles (arm64-v8a requis pour téléphones modernes)
+# (str) Version stable NDK (évite les bugs des versions trop récentes)
+android.ndk = 25b
+android.ndk_api = 21
+
+# (str) Architectures cibles
 android.archs = arm64-v8a
 
 # (bool) Autoriser la sauvegarde des données
@@ -54,18 +58,12 @@ android.allow_backup = True
 # (bool) Accepter la licence SDK
 android.accept_sdk_license = True
 
-# (list) Services en arrière-plan si nécessaire
-# android.services = vicservice:service.py
-
-# (str) Java source code
-android.add_src =
-
-# (list) Bibliothèques Gradle supplémentaires si besoin
-# android.gradle_dependencies =
+# (str) Bootstrap par défaut pour Kivy
+p4a.bootstrap = sdl2
 
 [buildozer]
 
-# (int) Niveau de journalisation (2 = très détaillé pour déboguer)
+# (int) Niveau de journalisation (2 = très détaillé)
 log_level = 2
 
 # (int) Avertissement root
